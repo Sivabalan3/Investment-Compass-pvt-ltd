@@ -1,9 +1,5 @@
 /node_modules
 .env
-/frontend/src/redux
-/frontend/src/pages/Orders
-/frontend/src/pages/Products
-/frontend/src/pages/User
 package-lock.json
 package.json
 example-env.env
