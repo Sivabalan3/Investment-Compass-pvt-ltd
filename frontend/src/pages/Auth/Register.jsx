@@ -71,14 +71,14 @@ const Register = () => {
                     </div>
 
                     <div className="mt-8">
-                        <form onSubmit={submitHandler}>
+                        <htmlForm onSubmit={submitHandler}>
                         <div>
-                              <label for="email" className="block mb-2 text-sm text-gray-600 dark:text-gray-200">Name</label>
+                              <label htmlFor="email" className="block mb-2 text-sm text-gray-600 dark:text-gray-200">Name</label>
                                 <input type="text" name="username"   id="name" value={username}
               onChange={(e) => setName(e.target.value)} placeholder="Enter your Name" className="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
                             </div>
                             <div>
-                                <label for="email" className="block mb-2 text-sm text-gray-600 dark:text-gray-200">Email Address</label>
+                                <label htmlFor="email" className="block mb-2 text-sm text-gray-600 dark:text-gray-200">Email Address</label>
                                 <input type="email" name="email" id="email" placeholder="demo@gmail.com"
               value={email}
               onChange={(e) => setEmail(e.target.value)} className="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
@@ -86,7 +86,7 @@ const Register = () => {
 
                             
                                 <div className="flex justify-between mb-2">
-                                    <label for="password" className="text-sm text-gray-600 dark:text-gray-200">Password</label>
+                                    <label htmlFor="password" className="text-sm text-gray-600 dark:text-gray-200">Password</label>
                                    
                                 </div>
 
@@ -94,7 +94,7 @@ const Register = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)} placeholder="Your Password" className="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
               <div>
-                                <label for="email" className="block mb-2 text-sm text-gray-600 dark:text-gray-200">Confirmed Password</label>
+                                <label htmlFor="email" className="block mb-2 text-sm text-gray-600 dark:text-gray-200">Confirmed Password</label>
                                 <input type="password"
               id="confirmPassword" 
               placeholder="Confirm password"
@@ -106,12 +106,12 @@ const Register = () => {
                             <div className="mt-6">
                                 <button
                                 disabled={isLoading}
-                                    className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-blue-500 rounded-md hover:bg-blue-400 focus:outline-none focus:bg-blue-400 focus:ring focus:ring-blue-300 focus:ring-opacity-50">
+                                    className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transhtmlForm bg-blue-500 rounded-md hover:bg-blue-400 focus:outline-none focus:bg-blue-400 focus:ring focus:ring-blue-300 focus:ring-opacity-50">
                                  {isLoading ? "Please Wait..." : "Sign Up"}
                                 </button>
                             </div>
 
-                        </form>
+                        </htmlForm>
 
                         <p className="mt-6 text-sm text-center text-gray-400">Alredy have an account yet? <Link to="/login" className="text-blue-500 focus:outline-none focus:underline hover:underline">Sign in</Link>.</p>
                     </div>
