@@ -92,138 +92,86 @@ const Order = () => {
   ) : error ? (
     <Messsage variant="danger">{error.data.message}</Messsage>
   ) : (
-    <div className="container flex flex-col ml-[10rem] md:flex-row">
-      <div className="md:w-2/3 pr-4">
-        <div className="border gray-300 mt-5 pb-4 mb-5">
-          {order.orderItems.length === 0 ? (
-            <Messsage>Order is empty</Messsage>
-          ) : (
-            <div className="overflow-x-auto">
-              <table className="w-[80%]">
-                <thead className="border-b-2">
-                  <tr>
-                    <th className="p-2">Image</th>
-                    <th className="p-2">Product</th>
-                    <th className="p-2 text-center">Quantity</th>
-                    <th className="p-2">Unit Price</th>
-                    <th className="p-2">Total</th>
-                  </tr>
-                </thead>
+   <>
 
-                <tbody>
-                  {order.orderItems.map((item, index) => (
-                    <tr key={index}>
-                      <td className="p-2">
-                        <img
-                          src={item.image}
-                          alt={item.name}
-                          className="w-16 h-16 object-cover"
-                        />
-                      </td>
-
-                      <td className="p-2">
-                        <Link to={`/product/${item.product}`}>{item.name}</Link>
-                      </td>
-
-                      <td className="p-2 text-center">{item.qty}</td>
-                      <td className="p-2 text-center">{item.price}</td>
-                      <td className="p-2 text-center">
-                        $ {(item.qty * item.price).toFixed(2)}
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          )}
+    <div className="flex flex-col items-center border-b bg-white py-4 sm:flex-row sm:px-10 lg:px-20 xl:px-32 bo">
+  <p  className="text-2xl font-bold text-gray-800">Details</p>
+ 
+</div>
+<div className="grid sm:px-10 lg:grid-cols-2 lg:px-20 xl:px-32 text-gray-900  border-2">
+  <div className="px-4 pt-8">
+    <p className="text-xl font-medium">Booking Summary</p>
+    <p className="text-gray-400">Check your items. And select a suitable Course.</p>
+    <div className="mt-8 space-y-3 rounded-lg border bg-white px-2 py-4 sm:px-6">
+    {order.orderItems.map((item, index) => (
+      <div className="flex flex-col rounded-lg bg-white sm:flex-row">
+        <img className="m-2 h-24 w-28 rounded-md border object-contain object-center"  src={item.image}   alt={item.name} />
+        <div className="flex w-full flex-col px-4 py-4">
+        <Link to={`/product/${item.product}`}><span className="font-semibold">{item.name.toUpperCase()}</span></Link>
+          <span className="float-right text-gray-400">{item.brand}</span>
+          <p className="text-lg font-bold">${item.price}</p>
         </div>
       </div>
-
-      <div className="md:w-1/3">
-        <div className="mt-5 border-gray-300 pb-4 mb-4">
-          <h2 className="text-xl font-bold mb-2">Shipping</h2>
-          <p className="mb-4 mt-4">
-            <strong className="text-pink-500">Order:</strong> {order._id}
-          </p>
-
-          <p className="mb-4">
-            <strong className="text-pink-500">Name:</strong>{" "}
-            {order.user.username}
-          </p>
-
-          <p className="mb-4">
-            <strong className="text-pink-500">Email:</strong> {order.user.email}
-          </p>
-
-          <p className="mb-4">
-            <strong className="text-pink-500">Address:</strong>{" "}
-            {order.shippingAddress.address}, {order.shippingAddress.city}{" "}
-            {order.shippingAddress.postalCode}, {order.shippingAddress.country}
-          </p>
-
-          <p className="mb-4">
-            <strong className="text-pink-500">Method:</strong>{" "}
-            {order.paymentMethod}
-          </p>
-
-          {order.isPaid ? (
-            <Messsage variant="success">Paid on {order.paidAt}</Messsage>
-          ) : (
-            <Messsage variant="danger">Not paid</Messsage>
-          )}
-        </div>
-
-        <h2 className="text-xl font-bold mb-2 mt-[3rem]">Order Summary</h2>
-        <div className="flex justify-between mb-2">
-          <span>Items</span>
-          <span>$ {order.itemsPrice}</span>
-        </div>
-        <div className="flex justify-between mb-2">
-          <span>Shipping</span>
-          <span>$ {order.shippingPrice}</span>
-        </div>
-        <div className="flex justify-between mb-2">
-          <span>Tax</span>
-          <span>$ {order.taxPrice}</span>
-        </div>
-        <div className="flex justify-between mb-2">
-          <span>Total</span>
-          <span>$ {order.totalPrice}</span>
-        </div>
-
-        {!order.isPaid && (
-          <div>
-            {loadingPay && <Loader />}{" "}
-            {isPending ? (
-              <Loader />
-            ) : (
-              <div>
-                <div>
-                  <PayPalButtons
-                    createOrder={createOrder}
-                    onApprove={onApprove}
-                    onError={onError}
-                  ></PayPalButtons>
-                </div>
-              </div>
-            )}
-          </div>
-        )}
-
-        {loadingDeliver && <Loader />}
-        {userInfo && userInfo.isAdmin && order.isPaid && !order.isDelivered && (
-          <div>
-            <button
-              type="button"
-              className="bg-pink-500 text-white w-full py-2"
-              onClick={deliverHandler}
-            >
-              Mark As Delivered
-            </button>
-          </div>
-        )}
-      </div>
+    ))}
     </div>
+
+    <p className="mt-8 text-lg font-medium">Booking Details</p>
+    <form className="mt-5 grid gap-6">
+      <div className="relative">
+        <input className="peer hidden" id="radio_1" type="radio" name="radio" checked />
+        <span className="peer-checked:border-gray-700 absolute right-4 top-1/2 box-content block h-3 w-3 -translate-y-1/2 rounded-full border-8 border-gray-300 bg-white"></span>
+        <label className="peer-checked:border-2 peer-checked:border-gray-700 peer-checked:bg-gray-50 flex cursor-pointer select-none rounded-lg border border-gray-300 p-4" for="radio_1">
+          <img className="w-14 object-contain" src="/images/naorrAeygcJzX0SyNI4Y0.png" alt="" />
+          <div className="ml-5">
+            <span className="mt-2 "><strong>Order Id : </strong> {order._id}</span>
+            <p className=""><strong>Name : </strong> {order.user.username}</p>
+            <p className=""><strong>Email : </strong> {order.user.email}</p>
+            <p className=""><strong>Address : </strong>  {order.shippingAddress.address}, {order.shippingAddress.city}{" "}
+            {order.shippingAddress.postalCode}, {order.shippingAddress.country}</p>
+            <p className=""><strong>Payment Method : </strong>  {order.paymentMethod}</p>
+          </div>
+        </label>
+      </div>
+     
+    </form>
+  </div>
+  <div className="mt-10 bg-gray-50 px-4 pt-8 lg:mt-0">
+    <p className="text-xl font-medium">Payment Details</p>
+    <p className="text-gray-400">Complete your order by providing your payment details.</p>
+         {!order.isPaid && (
+           <div>
+             {loadingPay && <Loader />}{" "}
+             {isPending ? (
+               <Loader />
+             ) : (
+               <div>
+                 <div>
+                   <PayPalButtons
+                     createOrder={createOrder}
+                     onApprove={onApprove}
+                     onError={onError}
+                   ></PayPalButtons>
+                 </div>
+               </div>
+             )}
+           </div>
+         )}
+          {loadingDeliver && <Loader />}
+         {userInfo && userInfo.isAdmin && order.isPaid && !order.isDelivered && (
+           <div>
+             <button
+               type="button"
+               className="bg-pink-500 text-white w-full py-2"
+               onClick={deliverHandler}
+            >
+               Mark As Delivered
+             </button>
+          </div>
+         )}
+    <Link to='/'><button className="mt-4 mb-8 w-full rounded-md bg-gray-900 px-6 py-3 font-medium text-white">Back to Home</button></Link>
+  </div>
+</div>
+</>
   );
 };
 

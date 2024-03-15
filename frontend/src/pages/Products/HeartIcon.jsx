@@ -41,9 +41,9 @@ const HeartIcon = ({ product }) => {
       onClick={toggleFavorites}
     >
       {isFavorite ? (
-        <FaHeart className="text-pink-500" />
+        <FaHeart className="text-pink-500 text-xl" />
       ) : (
-        <FaRegHeart className="text-white" />
+        <FaRegHeart className="text-purple-700 text-xl " />
       )}
     </div>
   );
