@@ -121,7 +121,7 @@ const Login = () => {
 
     <form onSubmit={submitHandler} className="mx-auto mb-0 mt-8 max-w-md space-y-4">
       <div>
-        <label for="email" className="sr-only">Email</label>
+        <label htmlFor="email" className="sr-only">Email</label>
 
         <div className="relative">
           <input

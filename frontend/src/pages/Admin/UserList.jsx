@@ -67,24 +67,39 @@ const UserList = () => {
           {error?.data?.message || error.error}
         </Message>
       ) : (
-        <div className="flex flex-col md:flex-row">
-          {/* <AdminMenu /> */}
-          <table className="w-full md:w-4/5 mx-auto">
-            <thead>
-              <tr>
-                <th className="px-4 py-2 text-left">ID</th>
-                <th className="px-4 py-2 text-left">NAME</th>
-                <th className="px-4 py-2 text-left">EMAIL</th>
-                <th className="px-4 py-2 text-left">ADMIN</th>
-                <th className="px-4 py-2"></th>
-              </tr>
-            </thead>
-            <tbody>
-              {users.map((user) => (
-                <tr key={user._id}>
-                  <td className="px-4 py-2">{user._id}</td>
-                  <td className="px-4 py-2">
-                    {editableUserId === user._id ? (
+      
+
+<div className="relative overflow-x-auto shadow-md sm:rounded-lg">
+    <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+        <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+          
+            <tr>
+                <th scope="col" className="px-6 py-3">
+                  Id
+                </th>
+                <th scope="col" className="px-6 py-3">
+                  Name
+                </th>
+                <th scope="col" className="px-6 py-3">
+                 Admin
+                </th>
+                <th scope="col" className="px-6 py-3">
+                  Email
+                </th>
+                <th scope="col" className="px-6 py-3">
+                 Actions
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+        {users.map((user) => (
+           
+            <tr key={user.id} className="bg-white dark:bg-gray-800">
+                <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                {user._id}
+                </th>
+                <td className="px-6 py-4">
+                {editableUserId === user._id ? (
                       <div className="flex items-center">
                         <input
                           type="text"
@@ -111,9 +126,16 @@ const UserList = () => {
                         </button>
                       </div>
                     )}
-                  </td>
-                  <td className="px-4 py-2">
-                    {editableUserId === user._id ? (
+                </td>
+                <td className="px-6 py-4">
+                {user.isAdmin ? (
+                      <FaCheck style={{ color: "green" }} />
+                    ) : (
+                      <FaTimes style={{ color: "red" }} />
+                    )}
+                </td>
+                <td className="px-6 py-4">
+                {editableUserId === user._id ? (
                       <div className="flex items-center">
                         <input
                           type="text"
@@ -140,16 +162,9 @@ const UserList = () => {
                         </button>
                       </div>
                     )}
-                  </td>
-                  <td className="px-4 py-2">
-                    {user.isAdmin ? (
-                      <FaCheck style={{ color: "green" }} />
-                    ) : (
-                      <FaTimes style={{ color: "red" }} />
-                    )}
-                  </td>
-                  <td className="px-4 py-2">
-                    {!user.isAdmin && (
+                </td>
+                <td className="px-6 py-4">
+                {!user.isAdmin && (
                       <div className="flex">
                         <button
                           onClick={() => deleteHandler(user._id)}
@@ -159,12 +174,13 @@ const UserList = () => {
                         </button>
                       </div>
                     )}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+                </td>
+            </tr>
+        ))}
+        </tbody>
+    </table>
+</div>
+
       )}
     </div>
   );

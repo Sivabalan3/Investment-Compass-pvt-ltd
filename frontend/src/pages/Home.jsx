@@ -22,13 +22,13 @@ const Home = () => {
         </Message>
       ) : (
         <>
-          <div className="lg:ml-[10rem] ml-10">
+          <div className=" ml-10">
             <h1 className=" mt-[6rem] text-[3rem]">
              All courses
             </h1>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-[2rem] lg:ml-[10rem]">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 mt-[2rem] ">
   {data.products.map((product) => (
     <div key={product._id}>
       <Product product={product} />

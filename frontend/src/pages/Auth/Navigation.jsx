@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { AiOutlineShoppingCart} from "react-icons/ai";
 import { FaHeart,FaUser } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import "./Navigation.css";
 import { useSelector, useDispatch } from "react-redux";
@@ -108,7 +108,7 @@ const handlenavhide=()=>{
         <div className="relative inline-flex items-center justify-center w-10 h-10 overflow-hidden bg-[#fbbf24] rounded-full dark:bg-gray-600">
     <h1 className="font-bold text-lg text-white dark:text-gray-300">{userInfo.username.charAt(0).toUpperCase()}</h1>
 </div>
-        {/* <img className="h-8 w-8 rounded-full" src={userInfo.image} alt=""/> */}
+       
       </button>
       
       <div className={hide ? "absolute right-0 z-10 mt-4 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" : "hidden"} role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabIndex="-1">
@@ -116,12 +116,24 @@ const handlenavhide=()=>{
         <h1  className="block px-4 py-2  text-gray-700 font-bold">{userInfo.username}</h1>
         <Link to="/profile"  className="block px-4 py-2 text-sm text-gray-700">{userInfo.email}</Link>
         </div>
-        <Link to="/admin/dashboard" className="block px-4 py-2 text-sm text-gray-700">Dashboard</Link>
-        <Link to="/admin/productlist" className="block px-4 py-2 text-sm text-gray-700">Products</Link>
-        <Link to="/admin/categorylist" className="block px-4 py-2 text-sm text-gray-700">Category</Link>
-        <Link to="/admin/orderlist" className="block px-4 py-2 text-sm text-gray-700">OrderList</Link>
-        <Link to="/profile" className="block px-4 py-2 text-sm text-gray-700">Profile</Link>
-        <Link to="/admin/userlist" className="block px-4 py-2 text-sm text-gray-700">User</Link>
+        <NavLink to="/admin/dashboard" className="block px-4 py-2 text-sm text-gray-700" style={({ isActive }) => ({
+                  color: isActive ? "blue" : "black",
+                })}>Dashboard</NavLink>
+        <NavLink style={({ isActive }) => ({
+                  color: isActive ? "blue" : "black",
+                })} to="/admin/productlist" className="block px-4 py-2 text-sm text-gray-700">Products</NavLink>
+        <NavLink style={({ isActive }) => ({
+                  color: isActive ? "blue" : "black",
+                })} to="/admin/categorylist" className="block px-4 py-2 text-sm text-gray-700">Category</NavLink>
+        <NavLink style={({ isActive }) => ({
+                  color: isActive ? "blue" : "black",
+                })} to="/admin/orderlist" className="block px-4 py-2 text-sm text-gray-700">OrderList</NavLink>
+        <NavLink style={({ isActive }) => ({
+                  color: isActive ? "blue" : "black",
+                })} to="/profile" className="block px-4 py-2 text-sm text-gray-700">Profile</NavLink>
+        <NavLink style={({ isActive }) => ({
+                  color: isActive ? "blue" : "black",
+                })} to="/admin/userlist" className="block px-4 py-2 text-sm text-gray-700">User</NavLink>
         <button onClick={logoutHandler} className="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabIndex="-1" id="user-menu-item-2">Sign out</button>
       </div>
       
