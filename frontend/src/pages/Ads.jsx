@@ -1,5 +1,6 @@
 import React from 'react'
 import pic3 from './imgs/pic3.png'
+import { Link } from 'react-router-dom'
 function Ads() {
   return (
     <>
@@ -7,7 +8,7 @@ function Ads() {
 
 <div className="w-screen bg-orange-50">
 
-<div className="relative mx-auto flex flex-col px-4 sm:max-w-xl md:max-w-screen-xl md:flex-row">
+<div className="relative mx-auto flex flex-col px-4 sm:max-w-xl md:max-w-screen-xl md:flex-row py-4">
 
   <div className="mx-auto mt-10 w-full max-w-xl md:mt-36 lg:max-w-screen-xl">
     <div className="mb-16 lg:mb-0 lg:max-w-lg">
@@ -19,10 +20,12 @@ function Ads() {
           World's Best <br />
           <span className="inline-block font-bold text-orange-600">Programming Tutors</span>
         </h2>
-        <p className="text-base text-gray-700 md:text-lg">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas ullam rem voluptatem, animi tempora expedita!Lorem ipsum dolor.</p>
+        <p className="text-base text-gray-700 md:text-lg">The world’s best programming tutors are experts in various languages like Python, Java, C++, JavaScript, and more. They understand that each student is unique and adapt their teaching methods accordingly. 📚👨‍🏫
+
+</p>
       </div>
       <div className="flex items-center">
-        <a href="/" className="mr-6 inline-flex h-12 items-center justify-center rounded bg-orange-600 px-6 font-medium tracking-wide text-white shadow-md outline-none transition duration-200 hover:bg-orange-400 focus:ring"> Get started </a>
+        <Link to="/shop" className="mr-6 inline-flex h-12 items-center justify-center rounded bg-orange-600 px-6 font-medium tracking-wide text-white shadow-md outline-none transition duration-200 hover:bg-orange-400 focus:ring"> Get started </Link>
         <a href="/" aria-label="" className="inline-flex items-center font-semibold text-orange-600 transition-colors duration-200 hover:text-orange-400">Learn more</a>
       </div>
     </div>
@@ -31,7 +34,7 @@ function Ads() {
   <div className="flex h-full w-full space-x-3 overflow-hidden px-2 md:justify-end">
    
     <div className="my-auto hidden flex-col space-y-3 md:mt-36 lg:flex">
-      <img src={pic3} alt="img" className='w-[60rem] h-[23rem]'/>
+      <img src={pic3} alt="img" className='w-[60rem] h-[24rem] '/>
     </div>
     <div className="my-auto w-[40rem] flex-col space-y-3 md:mt-36 lg:flex bg-white shadow-lg rounded-xl px-4 py-4">
       <div className="flex py-2 px-2 text-gray-700">
